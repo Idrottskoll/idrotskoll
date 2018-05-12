@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Renner-Book';
+    src: url("fonts/Renner-Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: 'Renner-Bold';
+    src: url("fonts/Renner-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: 'Renner-Medium';
+    src: url("fonts/Renner-Medium.otf") format("opentype");
+}
