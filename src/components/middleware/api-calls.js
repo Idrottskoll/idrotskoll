@@ -1,6 +1,8 @@
+// in this file we do all GET and POST requests to the API
 import axios from 'axios';
 
-// in this file we do all GET and POST requests to the API
+// URL to version 1 of the API
+const API_V1 = 'https://www.ikoll.se/api/v1';
 
 /**
  * @param string endpoint
@@ -10,7 +12,7 @@ import axios from 'axios';
  */
 export async function PostRequest(endpoint, requestObject, token = null) {
     return await axios
-        .post(`https://www.ikoll.se/api/v1/${endpoint}`, { requestObject, token })
+        .post(`${API_V1}/${endpoint}`, { requestObject, token })
         .then(response => {
             return response;
         })
@@ -26,7 +28,7 @@ export async function PostRequest(endpoint, requestObject, token = null) {
  */
 export async function GetRequest(endpoint, token = null) {
     return await axios
-        .get(`https://www.ikoll.se/api/v1/${endpoint}`, { token })
+        .get(`${API_V1}/${endpoint}`, { token })
         .then(response => {
             return response;
         })
