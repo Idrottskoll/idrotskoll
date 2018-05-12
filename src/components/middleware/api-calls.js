@@ -36,3 +36,42 @@ export async function GetRequest(endpoint, token = null) {
             return error;
         });
 }
+
+/**
+ * @param string name
+ * @param string item
+ * @return bool/error
+ */
+export function SetLocalStorage(name, item) {
+    return new Promise(async resolve => {
+        resolve(await localStorage.setItem(name, item));
+    });
+}
+
+/**
+ * @param string itenName
+ * @return string/error
+ */
+export function GetLocalStorage(itenName) {
+    return localStorage.getItem(itenName);
+}
+
+/**
+ * @param string itenName
+ * @return bool/error
+ */
+export function RemoveItem(itenName) {
+    return new Promise(async resolve => {
+        resolve(await localStorage.removeItem(itenName));
+    });
+}
+
+/**
+ * @return string/null
+ */
+export function IsSignedIn() {
+    if (!GetLocalStorage('token')) {
+        return false;
+    }
+    return true;
+}
