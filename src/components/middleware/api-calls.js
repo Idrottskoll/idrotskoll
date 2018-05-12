@@ -1,4 +1,4 @@
-// in this file we do all GET and POST requests to the API
+// in this file we do all GET and POST requests to the API and work with the local localStorage Browser API
 import axios from 'axios';
 
 // URL to version 1 of the API
@@ -38,6 +38,8 @@ export async function GetRequest(endpoint, token = null) {
 }
 
 /**
+ * Quick add item in localStorage
+ *
  * @param string name
  * @param string item
  * @return bool/error
@@ -49,6 +51,8 @@ export function SetLocalStorage(name, item) {
 }
 
 /**
+ * Quick get item from localStorage
+ *
  * @param string itenName
  * @return string/error
  */
@@ -57,6 +61,8 @@ export function GetLocalStorage(itenName) {
 }
 
 /**
+ * Quick remove item from localStorage
+ *
  * @param string itenName
  * @return bool/error
  */
@@ -67,6 +73,8 @@ export function RemoveItem(itenName) {
 }
 
 /**
+ * Check if a user is is signed in or not
+ *
  * @return string/null
  */
 export function IsSignedIn() {
