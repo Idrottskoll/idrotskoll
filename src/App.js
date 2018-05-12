@@ -87,7 +87,6 @@ const SmallTitle = styled.h2`
 
 
 
-
 export default class App extends Component {
     constructor(props) {
         super(props);
