@@ -14,6 +14,7 @@ import StreamScheduleContainer from './components/streamSchedule/StreamScheduleC
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Hero from './components/Hero';
+import UspContainer from './components/Usp';
 
 export default class App extends Component {
     render() {
@@ -21,6 +22,7 @@ export default class App extends Component {
             <div>
                 <Header></Header>
                 <Hero></Hero>
+                <UspContainer></UspContainer>
                 <Footer></Footer>
             </div>
           );
