@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from '../styles';
 
+
 export default class Header extends Component {
     render() {
         return (
-          <div>
-            <div className="row menu">
+          <div className="menu-container row">
+            <div className=" menu">
               <div className="large-6">
                 <img className="logo" src={require('../../images/icon.png')} />
               </div>

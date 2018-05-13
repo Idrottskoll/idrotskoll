@@ -1,8 +1,8 @@
 export const Kaninkuppen = {
-    title: 'Kaninkuppen 2018',
-    place: 'Landala squash center, Göteborg',
+    title: 'Kanin Cup 2018',
+    place: 'Landala Squashhall, Göteborg',
     date: '12-14 juni',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non euismod tortor. Integer feugiat sit amet lectus non bibendum. Proin laoreet rhoncus lectus, sed congue diam pulvinar et.',
+    body: 'Team Göteborg välkomnar er till årets roligaste junior tävling. Idrottskoll kommer under tävlingen att livestreama bana 1-4. Tryck på länken nedan för att komma till inspelningarna.',
 };
 
 export const Usp = {

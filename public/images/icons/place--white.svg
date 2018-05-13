@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>map-marker</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landingpage" transform="translate(-110.000000, -300.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="map-marker" transform="translate(110.000000, 300.000000)">
+                <path d="M6,0 C2.6865375,0 0,2.79785156 0,6.25 C0,7.21679688 0.2109375,8.13355469 0.5877,8.95019531 C0.608775,8.99660156 6,20 6,20 L11.347275,9.08691406 C11.7644625,8.23609375 12,7.27171875 12,6.25 C12,2.79785156 9.3140625,0 6,0 Z M6,10 C4.0119,10 2.4,8.3203125 2.4,6.25 C2.4,4.1796875 4.0119,2.5 6,2.5 C7.9875,2.5 9.6,4.1796875 9.6,6.25 C9.6,8.3203125 7.9875,10 6,10 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
