@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
+import SignIn from '../account/SignIn';
 import { IsSignedIn, RemoveLocalStorageItem, SetLocalStorage } from '../middleware/api-calls';
-import { Button } from '../styles';
+import { Button, Title } from '../styles';
 
 export default class Account extends Component {
     constructor(props) {
@@ -31,10 +32,9 @@ export default class Account extends Component {
 
     renderIsNotSignedIn = () => {
         return (
-            <React.Fragment>
-                <h1>Användarkonto</h1>
-                <Button onClick={() => this.signIn()}>Logga in</Button>
-            </React.Fragment>
+            <div className="col-xs-12">
+                <SignIn />
+            </div>
         );
     };
 
@@ -43,7 +43,8 @@ export default class Account extends Component {
             <div>
                 <Header />
                 <div className="row">
-                    <div className="col-xs-12">
+                    <div className="large-12">
+                        <Title>Logga in eller registrera konto</Title>
                         {this.state.isSignedIn
                             ? this.renderIsSignedIn()
                             : this.renderIsNotSignedIn()}
