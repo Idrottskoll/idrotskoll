@@ -16,6 +16,7 @@ export default class Header extends Component {
                 <Link className="lm-20 bold" href="/konto">Konto</Link>
               </div>
             </div>
+          </div>
         );
     }
 }
