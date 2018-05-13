@@ -13,6 +13,13 @@ npm install
 npm run dev
 ```
 
+## Terminology
+
+In this chapter we describe the terminology we use in the application code.
+
+*   `eventSchedule` The schedule for all the events and tournaments.
+*   `streamSchedule` The schedule for all the steams.
+
 ## Contrbuting
 
 ### General
