@@ -16,7 +16,7 @@ export default class Index extends Component {
                 <Hero />
                 <UspContainer />
                 <HowDoesItWork />
-                <Footer />
+                <Footer />    
             </React.Fragment>
         );
     }
