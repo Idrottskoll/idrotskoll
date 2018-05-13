@@ -14,6 +14,33 @@
 }
 
 .row {
-  max-width: 1240px;
-  justify-content: center;
+  max-width: 85.71429rem;
+  margin-right: auto;
+  margin-left: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+@media print, screen and (min-width: 64em) {
+  .large-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+}
+
+.bm-10 {margin-bottom: 10px;} .bm-40 {margin-bottom: 40px;}
+
+.text-right {
+  text-align: right;
+}
+
+.seperator {
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
