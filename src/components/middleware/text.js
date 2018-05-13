@@ -21,7 +21,7 @@ export const Usp = {
     title: 'Livestreaming',
     body: 'Missa inget med livestreaming med Idrottskoll. Ni som klubb kan anmäla er kupp, match eller träningläget för streaming under den tid ni önskar.'
   }
-}
+};
 
 export const HowDoesItWorks = {
   title: 'Hur fungerar det?',
@@ -38,7 +38,7 @@ export const HowDoesItWorks = {
     title: 'NY KLUBB/FÖRENING',
     body: 'Vill ni ha våra kameror uppsatta i era lokaler? Hör av er till info@idrottskoll.se eller använd forumläret här. Vi kontaktar då er för en konsultation där vi återkommer om detta är möjligt. '
   }
-}
+};
 
 export const Faq = {
   title: 'Vanliga frågor',
@@ -74,7 +74,7 @@ export const Faq = {
     title: 'Vart finns idrottskoll idag?',
     body: 'Idrottskoll har idag sina kameror instrallerade hos Landala Squash Center i Göteborg.',
   }
-}
+};
 
 export const Tableau = {
   title: 'Tablå',
@@ -82,4 +82,4 @@ export const Tableau = {
   items: {
     event: Kaninkuppen
   }
-}
+};

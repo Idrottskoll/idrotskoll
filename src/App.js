@@ -15,6 +15,7 @@ import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Hero from './components/Hero';
 import UspContainer from './components/Usp';
+import HowDoesItWork from './components/HowDoesItWork';
 
 export default class App extends Component {
     render() {
@@ -23,6 +24,7 @@ export default class App extends Component {
                 <Header></Header>
                 <Hero></Hero>
                 <UspContainer></UspContainer>
+                <HowDoesItWork></HowDoesItWork>
                 <Footer></Footer>
             </div>
           );
