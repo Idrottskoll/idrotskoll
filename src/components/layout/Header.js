@@ -11,12 +11,11 @@ export default class Header extends Component {
                 <img className="logo" src={require('../../images/icon.png')} />
               </div>
               <div className="large-6 inline display-right">
-                <Link className="lm-20" href="#">Tablå</Link>
-                <Link className="lm-20" href="#">Lägg inspelningförfrågan</Link>
-                <Link className="lm-20 bold" href="">Konto</Link>
+                <Link className="lm-20" href="/tabla">Tablå</Link>
+                <Link className="lm-20" href="/inspelningsforfragan">Lägg inspelningförfrågan</Link>
+                <Link className="lm-20 bold" href="/konto">Konto</Link>
               </div>
             </div>
-          </div>
         );
     }
 }
