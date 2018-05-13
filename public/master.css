@@ -12,3 +12,8 @@
     font-family: 'Renner-Medium';
     src: url("fonts/Renner-Medium.otf") format("opentype");
 }
+
+.row {
+  max-width: 1240px;
+  justify-content: center;
+}
