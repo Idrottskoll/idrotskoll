@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StreamScheduleCard } from './StreamScheduleCard';
+import { StreamScheduleCard } from './streamScheduleCard';
 
 export default class StreamScheduleContainer extends Component {
     render() {
