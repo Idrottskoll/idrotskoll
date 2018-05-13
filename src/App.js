@@ -12,11 +12,13 @@ import {
 } from './components/styles';
 import StreamScheduleContainer from './components/streamSchedule/StreamScheduleContainer';
 import Footer from './components/layout/Footer';
+import Header from './components/layout/Header'
 
 export default class App extends Component {
     render() {
         return (
             <div>
+                <Header></Header>
                 <Footer></Footer>
             </div>
           );
