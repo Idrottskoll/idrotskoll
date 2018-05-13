@@ -8,7 +8,7 @@ import Header from '../layout/Header';
 export default class Index extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Header />
                 <div className="row">
                     <div className="col-xs-12">
@@ -28,7 +28,7 @@ export default class Index extends Component {
                 </div>
                 <StreamScheduleContainer />
                 <Footer />
-            </div>
+            </React.Fragment>
         );
     }
 }
