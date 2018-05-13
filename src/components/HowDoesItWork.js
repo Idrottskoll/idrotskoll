@@ -10,12 +10,12 @@ export default class HowDoesItWork extends Component {
    }
     render() {
         return (
-          <div className="row">
+          <div className="row hdiw">
             <div className="large-6">
               <Title>{this.state.text.title}</Title>
               <Paragraph>{this.state.text.body}</Paragraph>
             </div>
-            <div className="large-12 inline tm-40">
+            <div className="large-12 inline">
               <div className="large-4">
                 <SmallTitle>{this.state.text.private.title}</SmallTitle>
                 <Paragraph>{this.state.text.private.body}</Paragraph>
