@@ -71,6 +71,8 @@ export const Link = styled.a`
     font-size: 18px;
     text-decoration: underline;
     transition: all 0.3s;
+    color: black;
+    display: block;
     &:hover {
         color: blue;
         cursor: pointer;
