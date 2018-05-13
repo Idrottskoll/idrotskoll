@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Faq } from './middleware/text';
-import { Button, Label, Input, TextArea, Title, Paragraph, Link, SmallTitle } from './styles';
-import StreamScheduleContainer from './streamSchedule/StreamScheduleContainer';
-import Footer from './layout/Footer';
-import Header from './layout/Header';
+import { Faq } from '../middleware/text';
+import { Button, Label, Input, TextArea, Title, Paragraph, Link, SmallTitle } from '../styles';
+import StreamScheduleContainer from '../streamSchedule/StreamScheduleContainer';
+import Footer from '../layout/Footer';
+import Header from '../layout/Header';
 
-export default class App extends Component {
+export default class Index extends Component {
     render() {
         return (
             <div>
