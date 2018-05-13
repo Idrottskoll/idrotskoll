@@ -58,6 +58,7 @@ export const TextArea = styled.textarea`
 export const Title = styled.h1`
     font-family: 'Renner-Book';
     font-size: 48px;
+    font-weight: 100;
 `;
 
 export const Paragraph = styled.p`
