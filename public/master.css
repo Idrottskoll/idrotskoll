@@ -1,19 +1,40 @@
-@font-face {
-    font-family: 'Renner-Book';
-    src: url("fonts/Renner-Book.otf") format("opentype");
+/* FONTS */
+@font-face {font-family: 'Renner-Book';src: url("fonts/Renner-Book.otf") format("opentype");}
+@font-face {font-family: 'Renner-Bold';src: url("fonts/Renner-Bold.otf") format("opentype");}
+@font-face {font-family: 'Renner-Medium';src: url("fonts/Renner-Medium.otf") format("opentype");}
+
+/* GRID */
+.row {max-width: 85.71429rem;margin-right: auto;margin-left: auto;display: -ms-flexbox;display: flex;-ms-flex-flow: row wrap;flex-flow: row wrap;}
+
+/* RESPONSIVE BEHAVIOR */
+@media print, screen and (min-width: 64em) {
+  .large-6 {-ms-flex: 0 0 50%;flex: 0 0 50%;max-width: 50%;}
 }
 
-@font-face {
-    font-family: 'Renner-Bold';
-    src: url("fonts/Renner-Bold.otf") format("opentype");
-}
+/* MISC */
+.bm-10 {margin-bottom: 10px;} .bm-40 {margin-bottom: 40px;} .lm-20 {margin-left: 20px;}
+.text-right { text-align: right; }
+.inline {display: flex; }
+.display-right { display: flex; justify-content: flex-end;}
+.bold{font-family: 'Renner-Bold' !important;}
 
-@font-face {
-    font-family: 'Renner-Medium';
-    src: url("fonts/Renner-Medium.otf") format("opentype");
-}
 
-.row {
-  max-width: 1240px;
-  justify-content: center;
+/* CUSTOM */
+.seperator {
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.menu {
+  display: flex;
+  align-items: center;
+}
+.menu a{
+  text-decoration: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.logo {
+  width: 40px;
 }
