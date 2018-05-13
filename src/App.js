@@ -16,7 +16,7 @@ export default class App extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-xs-6">
+                <div className="col-xs-12">
                     <Button>Button</Button> <br />
                     <br />
                     <Label>Label</Label> <br />
@@ -29,6 +29,7 @@ export default class App extends Component {
                     <Paragraph>Paragraph</Paragraph>
                     <Link>Link</Link>
                     <SmallTitle>Small title</SmallTitle>
+                    <StreamScheduleContainer />
                 </div>
             </div>
         );
