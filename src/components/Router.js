@@ -12,7 +12,7 @@ const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Index} />
-            <Route exact path="/Karlssonslister" component={Index} />
+            <Route exact path="/hem" component={Index} />
             <Route exact path="/tabla" component={EventSchedule} />
             <Route exact path="/konto" component={Account} />
             <Route exact path="/inspelningsforfragan" component={RequestRecording} />

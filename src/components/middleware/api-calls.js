@@ -66,7 +66,7 @@ export function GetLocalStorage(itenName) {
  * @param string itenName
  * @return bool/error
  */
-export function RemoveItem(itenName) {
+export function RemoveLocalStorageItem(itenName) {
     return new Promise(async resolve => {
         resolve(await localStorage.removeItem(itenName));
     });
