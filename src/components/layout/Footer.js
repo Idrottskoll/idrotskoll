@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Paragraph } from '../styles';
-import Seperator from './Seperator';
+import { Seperator } from './../seperator';
 
 export default class Footer extends Component {
     render() {
