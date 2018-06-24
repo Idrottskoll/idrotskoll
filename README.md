@@ -10,7 +10,7 @@
 git clone https://github.com/Idrottskoll/idrottskoll-web.git <My App Name>
 cd idrottskoll-web <My App Name>
 npm install
-npm run dev
+npm run start
 ```
 
 ## Terminology
