@@ -25,14 +25,32 @@ export default class Account extends Component {
         };
     }
 
+    /**
+     * @param string message
+     * @return void
+     */
+    setErrorMessage = message => {
+        this.setState({ error: message });
+        setTimeout(() => {
+            this.setState({ error: null });
+        }, 4000);
+        return;
+    };
+
+    /**
+     * @return bool
+     */
     signOut = async () => {
         await RemoveLocalStorageItem('token');
         return await this.setState({ isSignedIn: IsSignedIn() });
     };
 
+    /**
+     * @return bool
+     */
     signIn = async () => {
-        if (this.state.isSignedIn) {
-            return;
+        if (this.state.signInEmail === '' || this.state.signInPassword === '') {
+            return await this.setErrorMessage('E-post och lösenord måste vara ifyllt');
         }
 
         const response = await PostRequest('login', {
@@ -43,18 +61,27 @@ export default class Account extends Component {
         await this.setState({ signInPassword: '' });
 
         if (200 !== response.status) {
-            await this.setState({ error: 'Fel e-post adress eller lösenord.' });
-            await setTimeout(() => {
-                this.setState({ error: null });
-            }, 3000);
-            return;
+            return await this.setErrorMessage('Fel e-post adress eller lösenord.');
         }
 
         await SetLocalStorage('token', response.data.token);
+
         return await this.setState({ isSignedIn: IsSignedIn() });
     };
 
+    /**
+     * @return bool
+     */
     signUp = async () => {
+        if (
+            this.state.signUpEmail === '' ||
+            this.state.signUpName === '' ||
+            this.state.signUpPassword === '' ||
+            this.state.signUpPasswordConfirm === ''
+        ) {
+            return await this.setErrorMessage('Alla fält måste vara ifyllda.');
+        }
+
         const response = await PostRequest('register', {
             email: this.state.signUpEmail,
             name: this.state.signUpName,
@@ -65,19 +92,19 @@ export default class Account extends Component {
         await this.setState({ signUpPassword: '', signUpPasswordConfirm: '' });
 
         if (200 !== response.status) {
-            await this.setState({ error: 'Det gick inte att skapa ett konto.' });
-            await setTimeout(() => {
-                this.setState({ error: null });
-            }, 3000);
-            return;
+            return await this.setErrorMessage('Det gick inte att skapa ett konto.');
         }
 
         await this.setState({ signUpName: '', signUpEmail: '' });
 
         await SetLocalStorage('token', response.data.token);
+
         return await this.setState({ isSignedIn: IsSignedIn() });
     };
 
+    /**
+     * @return component
+     */
     renderIsSignedIn = () => {
         return (
             <React.Fragment>
@@ -87,9 +114,13 @@ export default class Account extends Component {
         );
     };
 
+    /**
+     * @return component
+     */
     renderAuthenticate = () => {
         return (
             <React.Fragment>
+                <div className="large-12">{this.state.error}</div>
                 <React.Fragment>
                     <SignIn
                         email={this.state.signInEmail}
@@ -114,7 +145,6 @@ export default class Account extends Component {
                         signUp={this.signUp}
                     />
                 </React.Fragment>
-                <div>{this.state.error}</div>
             </React.Fragment>
         );
     };
