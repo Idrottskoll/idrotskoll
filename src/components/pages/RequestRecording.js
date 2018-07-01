@@ -11,6 +11,7 @@ export default class RequestRecording extends Component {
                 <div className="row tm-40">
                     <div className="large-12">
                         <Title>Lägg inspelningsförfrågan</Title>
+                        <hr className="bm-40" />
                     </div>
                     <div className="large-6 rp-20">
                       <Label>Ämne*</Label>
