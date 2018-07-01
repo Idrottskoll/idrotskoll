@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Label, Input, TextArea, Button, Title, Paragraph, Link } from '../styles';
 import Footer from '../layout/Footer';
-import Header from '../layout/Header';
+import HeaderDark from '../layout/HeaderDark';
 
 export default class RequestRecording extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <HeaderDark />
                 <div className="row tm-40">
                     <div className="large-12">
                         <Title>Lägg inspelningsförfrågan</Title>
