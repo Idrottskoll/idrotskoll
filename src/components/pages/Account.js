@@ -125,7 +125,9 @@ export default class Account extends Component {
                 <Header />
                 <div className="row tm-40">
                     <div className="large-12">
-                        <Title>Logga in eller registrera konto</Title>
+                        <Title>
+                            {this.state.isSignedIn ? '' : 'Logga in eller registrera konto'}
+                        </Title>
                         <hr className="bm-40" />
                     </div>
                     {this.state.isSignedIn ? this.renderIsSignedIn() : this.renderAuthenticate()}
