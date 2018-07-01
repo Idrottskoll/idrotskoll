@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../layout/Footer';
-import Header from '../layout/Header';
+import HeaderDark from '../layout/HeaderDark';
 import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
 import {
@@ -122,7 +122,7 @@ export default class Account extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <HeaderDark />
                 <div className="row tm-40">
                     <div className="large-12">
                         <Title>
