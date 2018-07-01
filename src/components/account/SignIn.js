@@ -2,7 +2,7 @@ import React from 'react';
 import { Input, Button, Label } from '../styles';
 
 const SignIn = props => (
-    <div className="large-6">
+    <div className="large-6 rp-20">
         <Label>Email</Label>
         <Input
             value={props.email}
