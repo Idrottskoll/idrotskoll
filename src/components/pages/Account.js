@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
 import SignIn from '../account/SignIn';
-import { IsSignedIn, RemoveLocalStorageItem, SetLocalStorage } from '../middleware/api-calls';
+import {
+    IsSignedIn,
+    RemoveLocalStorageItem,
+    SetLocalStorage,
+    PostRequest,
+} from '../middleware/api-calls';
 import { Button, Title } from '../styles';
 
 export default class Account extends Component {
     constructor(props) {
         super(props);
-        this.state = { isSignedIn: IsSignedIn() };
+        this.state = { isSignedIn: IsSignedIn(), userEmail: null, userPassword: null };
     }
 
     signOut = async () => {
@@ -17,7 +22,26 @@ export default class Account extends Component {
     };
 
     signIn = async () => {
-        await SetLocalStorage('token', 'kejbrfjerb');
+        if (this.state.isSignedIn) {
+            return;
+        }
+
+        const response = await PostRequest('login', {
+            email: this.state.userEmail,
+            password: this.state.userPassword,
+        });
+
+        await this.setState({ userPassword: '' });
+
+        if (200 !== response.status) {
+            await this.setState({ error: 'Fel e-post adress eller lösenord.' });
+            await setTimeout(() => {
+                this.setState({ error: null });
+            }, 3000);
+            return;
+        }
+
+        await SetLocalStorage('token', response.data.token);
         return await this.setState({ isSignedIn: IsSignedIn() });
     };
 
@@ -33,7 +57,14 @@ export default class Account extends Component {
     renderIsNotSignedIn = () => {
         return (
             <div className="col-xs-12">
-                <SignIn />
+                <SignIn
+                    email={this.state.userEmail}
+                    password={this.state.userPassword}
+                    setUserEmail={email => this.setState({ userEmail: email })}
+                    setUserPassword={password => this.setState({ userPassword: password })}
+                    signIn={this.signIn}
+                />
+                <div>{this.state.error}</div>
             </div>
         );
     };

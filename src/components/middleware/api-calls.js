@@ -10,9 +10,9 @@ const API_V1 = 'https://www.ikoll.se/api/v1';
  * @param string token
  * @return response
  */
-export async function PostRequest(endpoint, requestObject, token = null) {
+export async function PostRequest(endpoint, requestObject) {
     return await axios
-        .post(`${API_V1}/${endpoint}`, { requestObject, token })
+        .post(`${API_V1}/${endpoint}`, requestObject)
         .then(response => {
             return response;
         })
