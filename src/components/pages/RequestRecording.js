@@ -8,7 +8,7 @@ export default class RequestRecording extends Component {
         return (
             <div>
                 <HeaderDark />
-                <div className="row tm-40">
+                <div className="row tm-80">
                     <div className="large-12">
                         <Title>Lägg inspelningsförfrågan</Title>
                         <hr className="bm-40" />
