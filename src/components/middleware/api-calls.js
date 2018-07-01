@@ -28,7 +28,7 @@ export async function PostRequest(endpoint, requestObject) {
  */
 export async function GetRequest(endpoint, token = null) {
     return await axios
-        .get(`${API_V1}/${endpoint}`, { token })
+        .get(`${API_V1}/${endpoint}`, token)
         .then(response => {
             return response;
         })
@@ -75,11 +75,12 @@ export function RemoveLocalStorageItem(itenName) {
 /**
  * Check if a user is is signed in or not
  *
- * @return string/null
+ * @return bool
  */
-export function IsSignedIn() {
-    if (!GetLocalStorage('token')) {
+export async function IsSignedIn() {
+    const token = await GetLocalStorage('token');
+    if (!token) {
         return false;
     }
-    return true;
+    return token;
 }
