@@ -7,8 +7,7 @@ import {
     TextArea,
     Title,
     Paragraph,
-    Link,
-    SmallTitle,
+    Link
 } from './components/styles';
 import StreamScheduleContainer from './components/streamSchedule/StreamScheduleContainer';
 import Footer from './components/layout/Footer';
@@ -21,12 +20,12 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <Hero />
-                <UspContainer />
-                <HowDoesItWork />
-                <Footer />
+                <Header></Header>
+                <Hero></Hero>
+                <UspContainer></UspContainer>
+                <HowDoesItWork></HowDoesItWork>
+                <Footer></Footer>
             </div>
-        );
+          );
     }
 }

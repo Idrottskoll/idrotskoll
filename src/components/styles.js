@@ -19,6 +19,7 @@ export const Label = styled.label`
     font-family: 'Renner-Book';
     color: #202020;
     line-height: 23px;
+    width: 100%;
 `;
 
 export const Input = styled.input`
@@ -29,6 +30,8 @@ export const Input = styled.input`
     padding-left: 20px;
     padding-right: 20px;
     transition: all 0.3s;
+    width: 100%;
+    margin-bottom: 20px;
     &:focus {
         outline: none;
         border: 1px solid blue;
@@ -45,6 +48,7 @@ export const TextArea = styled.textarea`
     border: 1px solid #202020;
     padding: 20px;
     transition: all 0.3s;
+    width: 100%;
     &:focus {
         outline: none;
         border: 1px solid blue;
@@ -58,6 +62,7 @@ export const TextArea = styled.textarea`
 export const Title = styled.h1`
     font-family: 'Renner-Book';
     font-size: 48px;
+    font-weight: 100;
 `;
 
 export const Paragraph = styled.p`

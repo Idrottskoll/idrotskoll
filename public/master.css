@@ -3,38 +3,182 @@
 @font-face {font-family: 'Renner-Bold';src: url("fonts/Renner-Bold.otf") format("opentype");}
 @font-face {font-family: 'Renner-Medium';src: url("fonts/Renner-Medium.otf") format("opentype");}
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 /* GRID */
 .row {max-width: 85.71429rem;margin-right: auto;margin-left: auto;display: -ms-flexbox;display: flex;-ms-flex-flow: row wrap;flex-flow: row wrap;}
 
 /* RESPONSIVE BEHAVIOR */
 @media print, screen and (min-width: 64em) {
-  .large-6 {-ms-flex: 0 0 50%;flex: 0 0 50%;max-width: 50%;}
+  .large-12{-ms-flex: 0 0 100%;flex: 0 0 100%;max-width: 100%;}
+  .large-6{-ms-flex: 0 0 50%;flex: 0 0 50%;max-width: 50%;}
+  .large-5{-ms-flex: 0 0 41.66667%;flex: 0 0 41.66667%;max-width: 41.66667%;}
+  .large-4{-ms-flex: 0 0 33.33333%;flex: 0 0 33.33333%;max-width: 33.33333%;}
 }
 
 /* MISC */
-.bm-10 {margin-bottom: 10px;} .bm-40 {margin-bottom: 40px;} .lm-20 {margin-left: 20px;}
-.text-right { text-align: right; }
+.bm-10{margin-bottom:10px;}.bm-40{margin-bottom: 40px;}.bm-20{margin-bottom:20px;}
+.lm-20{margin-left: 20px;}
+.tm-40{margin-top: 40px;}
+.rm-20{margin-right:20px;}
+.rp-20{padding-right: 20px;}
+.text-right {text-align: right;}
 .inline {display: flex; }
 .display-right { display: flex; justify-content: flex-end;}
 .bold{font-family: 'Renner-Bold' !important;}
-
+.color-white{color:white;}
+a.color-white{color:white;}
+.z{z-index: 99;}
 
 /* CUSTOM */
+#root {
+  /* margin: 10px; */
+  /* position: relative; */
+}
+.row {position: relative;}
 .seperator {
   border-bottom: 1px solid black;
   width: 100%;
   margin-top: 80px;
   margin-bottom: 80px;
 }
+.no-margin {
+  margin: 0 !important;
+}
+.menu-container {
+  position: relative;
+}
 .menu {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 9;
+  margin-top: 10px;
+
+  background: transparent;
+  position: absolute;
+  width: 100%;
+
 }
 .menu a{
+  color: white;
   text-decoration: none;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
+
 .logo {
   width: 40px;
+}
+.hero {
+  height: 80vh;
+  background: blue;
+  background-image: url('images/kaninkuppen-large.jpeg');
+  background-position: top;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  top: 0;
+}
+.hero h1 {
+  margin-bottom: 10px;
+}
+.hero .row {
+  height: 100%;
+  align-items: center;
+}
+.overlay-black {
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(-450deg, rgba(0,0,0,0.00) 0%, #000000 100%);
+}
+.place, .date {
+  margin-top: 10px;
+}
+.place p, .date p {
+  margin: 0;
+  margin-right: 10px;
+}
+.place::before {
+  content: '';
+  height: 20px;
+  width: 20px;
+  background-size: 20px;
+  background-image: url('images/icons/place--white.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.date::before {
+  content: '';
+  height: 20px;
+  width: 30px;
+  background-size: 20px;
+  background-image: url('images/icons/date--white.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.usp {
+  margin-top: 60px;
+}
+.usp h1, .usp h2, .hdiw h1  {
+  margin-bottom: 10px;
+}
+.usp p {
+  margin-top: 0;
+}
+.usp-img {
+  width: 90%;
+  border: 1px solid black;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.check {
+  position: relative;
+  width: 20px !important;
+  height: 20px; }
+
+#checkbox {
+  border: 1px solid black;
+  background: white;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 0; }
+  #checkbox:focus {
+    outline: none; }
+  #checkbox:before, #checkbox:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: -3px;
+    top: 1px;
+    bottom: 0;
+    margin: auto; }
+  #checkbox:before {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: 2px solid black; }
+  #checkbox:after {
+    width: 0;
+    height: 0;
+    background: black;
+    transition: all 0.2s; }
+  #checkbox:checked:before {
+    width: 20px;
+    height: 20px; }
+  #checkbox:checked:after {
+    width: 13px;
+    height: 14px; }
+
+input.error {
+  border: 1px solid red;
 }

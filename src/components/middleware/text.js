@@ -1,8 +1,8 @@
 export const Kaninkuppen = {
-    title: 'Kaninkuppen 2018',
-    place: 'Landala squash center, Göteborg',
+    title: 'Kanin Cup 2018',
+    place: 'Landala Squashhall, Göteborg',
     date: '12-14 juni',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non euismod tortor. Integer feugiat sit amet lectus non bibendum. Proin laoreet rhoncus lectus, sed congue diam pulvinar et.',
+    body: 'Team Göteborg välkomnar er till årets roligaste junior tävling. Idrottskoll kommer under tävlingen att livestreama bana 1-4. Tryck på länken nedan för att komma till inspelningarna.',
 };
 
 export const Usp = {
@@ -21,7 +21,7 @@ export const Usp = {
     title: 'Livestreaming',
     body: 'Missa inget med livestreaming med Idrottskoll. Ni som klubb kan anmäla er kupp, match eller träningläget för streaming under den tid ni önskar.'
   }
-}
+};
 
 export const HowDoesItWorks = {
   title: 'Hur fungerar det?',
@@ -38,7 +38,7 @@ export const HowDoesItWorks = {
     title: 'NY KLUBB/FÖRENING',
     body: 'Vill ni ha våra kameror uppsatta i era lokaler? Hör av er till info@idrottskoll.se eller använd forumläret här. Vi kontaktar då er för en konsultation där vi återkommer om detta är möjligt. '
   }
-}
+};
 
 export const Faq = {
   title: 'Vanliga frågor',
@@ -74,7 +74,7 @@ export const Faq = {
     title: 'Vart finns idrottskoll idag?',
     body: 'Idrottskoll har idag sina kameror instrallerade hos Landala Squash Center i Göteborg.',
   }
-}
+};
 
 export const Tableau = {
   title: 'Tablå',
@@ -82,4 +82,4 @@ export const Tableau = {
   items: {
     event: Kaninkuppen
   }
-}
+};
