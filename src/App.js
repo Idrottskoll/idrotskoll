@@ -7,8 +7,7 @@ import {
     TextArea,
     Title,
     Paragraph,
-    Link,
-    SmallTitle
+    Link
 } from './components/styles';
 import StreamScheduleContainer from './components/streamSchedule/StreamScheduleContainer';
 import Footer from './components/layout/Footer';
