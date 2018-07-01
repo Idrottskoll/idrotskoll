@@ -7,7 +7,8 @@ export const Kaninkuppen = {
 
 export const Usp = {
   title: 'Utveckla din idrott genom video',
-  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non euismod tortor. Integer feugiat sit amet lectus non bibendum. Proin laoreet rhoncus lectus, sed congue diam pulvinar et.',
+  body_one: 'Idrottskoll grundades 2014, med idé om att alla skall kunna utvecka sin idrott med hjälp av video. Idag använder elitspelare och top klubbar dagligen video analysering för att förbättra deras prestationer. Både genom hitta vad man kan förbättra i sitt spel, men även plocka ut de positiva sekvenserna ur en matchen eller träning. Idrottskoll skapades för alla, med grund idén om att även barn och ungdomar skall både ha råd och möjlighet att analysera sina match och träningar.',
+  body_two: 'Tänk om alla som satsar på sin idrott kan ha tillgång till material som annars bara elitspelare har tillgång till. Tänk på hur mycket fortare man kan utvecklas. I systemet kan man på ett snabbt och enkelt sätt spela in sina matcher och träningar för att efteråt analysera dem. Man kan antingen streama matchen från hemsidan eller ladda ner den som en fil för att lägga in i externa analys program. Idrottskoll erbjuder även live streamning från utvalda event och turneringar.',
   button_caption: 'Skapa ett konto hos Idrottskoll',
   usp_one: {
     title: 'Se över hela världen',
