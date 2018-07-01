@@ -9,7 +9,7 @@ export default class Header extends Component {
             <div className=" menu">
               <div className="large-6">
               <a href="/">
-                <img className="logo" src={require('../../images/icon.png')} />
+                <img className="logo" src={require('../../images/icon.png')} alt="Idrottskoll logotyp" />
               </a>
               </div>
               <div className="large-6 inline display-right">

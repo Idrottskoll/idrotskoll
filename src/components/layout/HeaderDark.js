@@ -9,7 +9,7 @@ export default class HeaderDark extends Component {
             <div className="menu">
               <div className="large-6">
               <a href="/">
-                <img className="logo" src={require('../../images/icon-dark.png')} />
+                <img className="logo" src={require('../../images/icon-dark.png')} alt="Idrottskoll logotyp" />
               </a>
               </div>
               <div className="large-6 inline display-right">

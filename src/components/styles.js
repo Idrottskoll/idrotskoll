@@ -89,18 +89,3 @@ export const SmallTitle = styled.h2`
     font-size: 18px;
     text-transform: uppercase;
 `;
-
-{
-    /* <Button>Button</Button> <br />
-<br />
-<Label>Label</Label> <br />
-<br />
-<Input placeholder="Placeholder" /> <br />
-<br />
-<TextArea placeholder="Placeholder" /> <br />
-<br />
-<Title>Title</Title>
-<Paragraph>Paragraph</Paragraph>
-<Link>Link</Link>
-<SmallTitle>Small title</SmallTitle> */
-}

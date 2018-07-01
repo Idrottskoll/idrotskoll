@@ -18,17 +18,17 @@ export default class UspContainer extends Component {
             </div>
             <div className="large-12 inline tm-40">
               <div className="large-4">
-                <img className="usp-img" src={require('../images/usp1.png')} />
+                <img className="usp-img" src={require('../images/usp1.png')} alt="Se över hela världen!"/>
                 <SmallTitle>{this.state.text.usp_one.title}</SmallTitle>
                 <Paragraph>{this.state.text.usp_one.body}</Paragraph>
               </div>
               <div className="large-4">
-                <img className="usp-img" src={require('../images/usp2.png')} />
+                <img className="usp-img" src={require('../images/usp2.png')} alt="För alla åldrar." />
                 <SmallTitle>{this.state.text.usp_two.title}</SmallTitle>
                 <Paragraph>{this.state.text.usp_two.body}</Paragraph>
               </div>
               <div className="large-4">
-                <img className="usp-img" src={require('../images/usp3.png')} />
+                <img className="usp-img" src={require('../images/usp3.png')} alt="Livestreaming" />
                 <SmallTitle>{this.state.text.usp_three.title}</SmallTitle>
                 <Paragraph>{this.state.text.usp_three.body}</Paragraph>
               </div>

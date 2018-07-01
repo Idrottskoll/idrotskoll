@@ -3,6 +3,7 @@ import Footer from '../layout/Footer';
 import HeaderDark from '../layout/HeaderDark';
 import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
+import SignedIn from '../account/SignedIn';
 import {
     IsSignedIn,
     RemoveLocalStorageItem,
@@ -153,10 +154,10 @@ export default class Account extends Component {
     renderIsSignedIn = () => {
         return (
             <React.Fragment>
-                <h1>{`Välkommen ${this.state.user.name}`}</h1>
-                <div>
-                    <Button onClick={() => this.signOut()}>Logga ut</Button>
-                </div>
+              {/* <h1>{`Välkommen ${this.state.user.name}`}</h1> */}
+              <SignedIn />
+              {console.log(this.state.user.name)}
+                {/*<Button onClick={() => this.signOut()}>Logga ut</Button>*/}
             </React.Fragment>
         );
     };
@@ -205,7 +206,7 @@ export default class Account extends Component {
                         <Title>
                             {this.state.isSignedIn ? '' : 'Logga in eller registrera konto'}
                         </Title>
-                        <hr className="bm-40" />
+
                     </div>
                     {this.state.isSignedIn ? this.renderIsSignedIn() : this.renderAuthenticate()}
                 </div>
