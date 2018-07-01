@@ -9,22 +9,38 @@ import {
     RemoveLocalStorageItem,
     SetLocalStorage,
     PostRequest,
+    GetRequest,
 } from '../middleware/api-calls';
-import { Title } from '../styles';
+import { Button, Title } from '../styles';
 
 export default class Account extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSignedIn: IsSignedIn(),
+            isSignedIn: false,
             signInEmail: '',
             signInPassword: '',
             signUpName: '',
             signUpEmail: '',
             signUpPassword: '',
             signUpPasswordConfirm: '',
+            user: null,
         };
+        this.signInOnMoutn();
     }
+
+    /**
+     * Is used to sign in user on component mount if a token is present
+     *
+     * @return User
+     */
+    signInOnMoutn = async () => {
+        const token = await IsSignedIn();
+        if (!token) {
+            return;
+        }
+        await this.setUser(token);
+    };
 
     /**
      * @param string message
@@ -43,7 +59,7 @@ export default class Account extends Component {
      */
     signOut = async () => {
         await RemoveLocalStorageItem('token');
-        return await this.setState({ isSignedIn: IsSignedIn() });
+        return await this.setState({ isSignedIn: false });
     };
 
     /**
@@ -65,9 +81,34 @@ export default class Account extends Component {
             return await this.setErrorMessage('Fel e-post adress eller lösenord.');
         }
 
-        await SetLocalStorage('token', response.data.token);
+        await SetLocalStorage('token', `Bearer1 ${response.data.token}`);
 
-        return await this.setState({ isSignedIn: IsSignedIn() });
+        const user = await this.setUser(`Bearer1 ${response.data.token}`);
+
+        if (!user) {
+            return await this.setErrorMessage('Det gick inte att logga in.');
+        }
+    };
+
+    /**
+     * @param string token
+     * @return bool|User
+     */
+    setUser = async token => {
+        if (token.length < 10) {
+            await this.signOut();
+            return false;
+        }
+
+        const response = await GetRequest('user', { headers: { Authorization: token } });
+
+        if (200 !== response.status) {
+            await this.signOut();
+            return false;
+        }
+        await this.setState({ isSignedIn: true, user: response.data });
+
+        return true;
     };
 
     /**
@@ -98,9 +139,13 @@ export default class Account extends Component {
 
         await this.setState({ signUpName: '', signUpEmail: '' });
 
-        await SetLocalStorage('token', response.data.token);
+        await SetLocalStorage('token', `Bearer1 ${response.data.token}`);
 
-        return await this.setState({ isSignedIn: IsSignedIn() });
+        const user = await this.setUser(`Bearer1 ${response.data.token}`);
+
+        if (!user) {
+            return await this.setErrorMessage('Det gick inte att logga in den nya användaren.');
+        }
     };
 
     /**
@@ -109,8 +154,9 @@ export default class Account extends Component {
     renderIsSignedIn = () => {
         return (
             <React.Fragment>
+              {/* <h1>{`Välkommen ${this.state.user.name}`}</h1> */}
               <SignedIn />
-              {console.log(this.state.signUpName)}
+              {console.log(this.state.user.name)}
                 {/*<Button onClick={() => this.signOut()}>Logga ut</Button>*/}
             </React.Fragment>
         );
