@@ -8,7 +8,7 @@ import {
     SetLocalStorage,
     PostRequest,
 } from '../middleware/api-calls';
-import { Button, Title } from '../styles';
+import { Button, Title, Label, Input, Link } from '../styles';
 
 export default class Account extends Component {
     constructor(props) {
@@ -56,7 +56,7 @@ export default class Account extends Component {
 
     renderIsNotSignedIn = () => {
         return (
-            <div className="col-xs-12">
+            <div className="large-6 rp-20">
                 <SignIn
                     email={this.state.userEmail}
                     password={this.state.userPassword}
@@ -73,12 +73,34 @@ export default class Account extends Component {
         return (
             <div>
                 <Header />
-                <div className="row">
+                <div className="row tm-40">
                     <div className="large-12">
-                        <Title>Logga in eller registrera konto</Title>
-                        {this.state.isSignedIn
-                            ? this.renderIsSignedIn()
-                            : this.renderIsNotSignedIn()}
+                      <Title>Logga in eller registrera konto</Title>
+                      <hr className="bm-40" />
+                    </div>
+                    {this.state.isSignedIn
+                        ? this.renderIsSignedIn()
+                        : this.renderIsNotSignedIn()}
+                    <div className="large-6">
+                      <Label>Namn*</Label>
+                      <Input placeholder="För- och efternamn" type="text"></Input>
+                      <Label>Email*</Label>
+                      <Input placeholder="Din email" type="email"></Input>
+                      <Label>Aktiv sport</Label>
+                      <Input placeholder="Vilken sport är du aktiv i?" type="text"></Input>
+                      <Label>Klubb/förening</Label>
+                      <Input placeholder="Vilken klubb/förening är du aktiv i?" type="text"></Input>
+                      <Label>Sätt ett lösenord*</Label>
+                      <Input placeholder="*********" type="password"></Input>
+                      <Label>Bekräfta lösenord*</Label>
+                      <Input placeholder="*********" type="password"></Input>
+                      <div className="inline bm-20">
+                        <div className="check rm-20">
+                          <Input id="checkbox" type="checkbox" />
+                        </div>
+                        <Label>Jag godkänner att Idrottskoll håller mina uppgifter enligt deras <Link>Privacy Policies.</Link></Label>
+                      </div>
+                      <Button>Registrera konto</Button>
                     </div>
                 </div>
                 <Footer />
