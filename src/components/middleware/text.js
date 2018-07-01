@@ -42,35 +42,35 @@ export const HowDoesItWorks = {
 
 export const Faq = {
   title: 'Vanliga frågor',
-  question: {
+  question_one: {
     title: 'Jag vill inte bli filmad, hur gör jag då?',
     body: 'Om du inte vill bli filmad så behöver du absolut inte. Hör av dig till info@idrottskoll om vilken livestream det handlar om och tid så ser vi till att inte streama just den banan när du spelar din match.'
   },
-  question: {
+  question_two: {
     title: 'Vad kostar det?',
     body: 'Vi återkommer med en offert efter dina önskemål när du gör en förfrågan till oss. Ingen förfrågande är bindande.'
   },
-  question: {
+  question_three: {
     title: 'Hur tillämpar Idrottskoll GDPR?',
     body: 'Idrottskoll är 100% GDPR complient. Läs mer om våra terms and services <a href="#">här</a> eller vår privacy policies <a href="#">här</a>.'
   },
-  question: {
+  question_four: {
     title: 'Jag har en förening som skulle vilja använda sig av eran tjänst. Hur går jag tillväga?',
     body: 'Du är välkommen att anmäla din förening till oss så tar vi kontakt med ansvarige angående att implementera kamerorna i era lokaler.',
   },
-  question: {
+  question_five: {
     title: 'Vilka är det som ligger bakom Idrottskoll?',
     body: 'Grundaren och utvecklare av Idrottskoll är Joakim Remler. Vid hans sida har han utvecklaren Jeremy Danner och designern Erica Glimsholt.',
   },
-  question: {
+  question_six: {
     title: 'Hur fungerar betalningen?',
     body: 'Vid dagsfallet så skickas en faktura efter varje inspelning.',
   },
-  question: {
+  question_seven: {
     title: 'Vilka kan se videon?',
     body: 'Alla kan se videon oberoende på vart i världen de befinner sig.',
   },
-  question: {
+  question_eight: {
     title: 'Vart finns idrottskoll idag?',
     body: 'Idrottskoll har idag sina kameror instrallerade hos Landala Squash Center i Göteborg.',
   }

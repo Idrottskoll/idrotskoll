@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Title, Paragraph, Link, SmallTitle } from './styles';
+import { Title, Paragraph, SmallTitle } from './styles';
 import { HowDoesItWorks } from './middleware/text';
 import { Seperator } from './seperator';
 
