@@ -10,7 +10,7 @@ import {
     SetLocalStorage,
     PostRequest,
 } from '../middleware/api-calls';
-import { Button, Title, Label, Input, Link } from '../styles';
+import { Title } from '../styles';
 
 export default class Account extends Component {
     constructor(props) {
