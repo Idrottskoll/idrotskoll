@@ -42,7 +42,7 @@ export async function GetRequest(endpoint, token = null) {
  *
  * @param string name
  * @param string item
- * @return bool/error
+ * @return bool|error
  */
 export function SetLocalStorage(name, item) {
     return new Promise(async resolve => {
@@ -54,7 +54,7 @@ export function SetLocalStorage(name, item) {
  * Quick get item from localStorage
  *
  * @param string itenName
- * @return string/error
+ * @return string|error
  */
 export function GetLocalStorage(itenName) {
     return localStorage.getItem(itenName);
@@ -64,7 +64,7 @@ export function GetLocalStorage(itenName) {
  * Quick remove item from localStorage
  *
  * @param string itenName
- * @return bool/error
+ * @return bool|error
  */
 export function RemoveLocalStorageItem(itenName) {
     return new Promise(async resolve => {
@@ -75,11 +75,11 @@ export function RemoveLocalStorageItem(itenName) {
 /**
  * Check if a user is is signed in or not
  *
- * @return bool
+ * @return bool|string
  */
 export async function IsSignedIn() {
     const token = await GetLocalStorage('token');
-    if (!token) {
+    if (null === token) {
         return false;
     }
     return token;

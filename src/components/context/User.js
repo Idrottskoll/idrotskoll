@@ -11,56 +11,84 @@ const UserContext = React.createContext({ isSignedIn: false });
 
 export const UserConsumer = UserContext.Consumer;
 
+/** Determen if a User is admin */
+export const UserLevel = { admin: null, normal: null };
+
 export class UserProvider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: null,
-            email: null,
+            /** bool */
             isSignedIn: false,
+
+            /** string */
+            name: null,
+
+            /** string */
+            email: null,
+
+            /** int */
+            level: null,
+
+            /** array */
+            orders: [],
+
+            /** string */
             error: null,
         };
-        this.signInOnMoutn();
+
+        if (!this.state.isSignedIn) {
+            this.signInOnMoutn();
+        }
     }
 
     /**
      * Is used to sign in user on component mount if a token is present
      *
-     * @return User
+     * @return void
      */
     signInOnMoutn = async () => {
         const token = await IsSignedIn();
-        if (!token) {
+        this.setUser(token);
+        return;
+    };
+
+    /**
+     * @param string email
+     * @param string password
+     * @return string|void
+     */
+    signIn = async (email, password) => {
+        if ('' === (email && password)) {
+            await this.setErrorMessage('E-post och lösenord måste vara ifyllt');
             return;
         }
-        await this.setUser(token);
-    };
 
-    signIn = async (email, password) => {
-        if (email === '' || password === '') {
-            return await this.setErrorMessage('E-post och lösenord måste vara ifyllt');
-        }
-
-        const response = await PostRequest('login', {
-            email,
-            password,
-        });
+        const response = await PostRequest('login', { email, password });
 
         if (200 !== response.status) {
-            return await this.setErrorMessage('Fel e-post adress eller lösenord.');
+            await this.setErrorMessage('Fel e-post adress eller lösenord.');
+            return;
         }
 
-        await SetLocalStorage('token', `Bearer1 ${response.data.token}`);
+        const token = `Bearer1 ${response.data.token}`;
 
-        const user = await this.setUser(`Bearer1 ${response.data.token}`);
+        SetLocalStorage('token', token);
+
+        const user = await this.setUser(token);
 
         if (!user) {
-            return await this.setErrorMessage('Det gick inte att logga in.');
+            await this.setErrorMessage('Det gick inte att logga in.');
+            return;
         }
     };
 
+    /**
+     * @param string token
+     * @return bool
+     */
     setUser = async token => {
-        if (token.length < 10) {
+        if (!token) {
             await this.signOut();
             return false;
         }
@@ -76,21 +104,28 @@ export class UserProvider extends React.Component {
             isSignedIn: true,
             name: response.data.name,
             email: response.data.email,
+            level: response.data.level,
         });
 
         return true;
     };
 
     /**
-     * @return bool
+     * @param email string
+     * @param name string
+     * @param password string
+     * @param passwordConfirmation string
+     * @return void
      */
     signUp = async (email, name, password, passwordConfirmation) => {
-        if (email === '' || name === '' || password === '' || passwordConfirmation === '') {
-            return await this.setErrorMessage('Alla fält måste vara ifyllda.');
+        if ('' === (email && name && password && passwordConfirmation)) {
+            await this.setErrorMessage('Alla fält måste vara ifyllda.');
+            return;
         }
 
         if (password !== passwordConfirmation) {
-            return await this.setErrorMessage('Lösenord stämmer inte överens');
+            await this.setErrorMessage('Lösenord stämmer inte överens');
+            return;
         }
 
         const response = await PostRequest('register', {
@@ -103,26 +138,29 @@ export class UserProvider extends React.Component {
         await this.setState({ signUpPassword: '', signUpPasswordConfirm: '' });
 
         if (200 !== response.status) {
-            return await this.setErrorMessage('Det gick inte att skapa ett konto.');
+            await this.setErrorMessage('Det gick inte att skapa ett konto.');
+            return;
         }
 
-        //await this.setState({ signUpName: '', signUpEmail: '' });
+        const token = `Bearer1 ${response.data.token}`;
 
-        await SetLocalStorage('token', `Bearer1 ${response.data.token}`);
+        SetLocalStorage('token', token);
 
-        const user = await this.setUser(`Bearer1 ${response.data.token}`);
+        const user = await this.setUser(token);
 
         if (!user) {
-            return await this.setErrorMessage('Det gick inte att logga in den nya användaren.');
+            await this.setErrorMessage('Det gick inte att logga in den nya användaren.');
+            return;
         }
     };
 
     /**
-     * @return bool
+     * @return void
      */
     signOut = async () => {
         await RemoveLocalStorageItem('token');
-        return await this.setState({ isSignedIn: false });
+        await this.setState({ isSignedIn: false });
+        return;
     };
 
     /**
