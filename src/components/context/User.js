@@ -12,7 +12,7 @@ const UserContext = React.createContext({ isSignedIn: false });
 export const UserConsumer = UserContext.Consumer;
 
 /** Determen if a User is admin */
-export const UserLevel = { admin: null, normal: null };
+export const UserLevel = { admin: 100, normal: null };
 
 export class UserProvider extends React.Component {
     constructor(props) {
@@ -49,7 +49,7 @@ export class UserProvider extends React.Component {
      */
     signInOnMoutn = async () => {
         const token = await IsSignedIn();
-        this.setUser(token);
+        this.getUser(token);
         return;
     };
 
@@ -71,11 +71,13 @@ export class UserProvider extends React.Component {
             return;
         }
 
-        const token = `Bearer1 ${response.data.token}`;
+        const token = response.data.token.length > 0 ? `Bearer1 ${response.data.token}` : false;
 
-        SetLocalStorage('token', token);
+        if (token) {
+            SetLocalStorage('token', token);
+        }
 
-        const user = await this.setUser(token);
+        const user = await this.getUser(token);
 
         if (!user) {
             await this.setErrorMessage('Det gick inte att logga in.');
@@ -87,25 +89,23 @@ export class UserProvider extends React.Component {
      * @param string token
      * @return bool
      */
-    setUser = async token => {
+    getUser = async token => {
         if (!token) {
             await this.signOut();
             return false;
         }
 
-        const response = await GetRequest('user', { headers: { Authorization: token } });
+        const {
+            data: { email, level, name, order },
+            status,
+        } = await GetRequest('user', { headers: { Authorization: token } });
 
-        if (200 !== response.status) {
+        if (200 !== status) {
             await this.signOut();
             return false;
         }
 
-        await this.setState({
-            isSignedIn: true,
-            name: response.data.name,
-            email: response.data.email,
-            level: response.data.level,
-        });
+        await this.setState({ isSignedIn: true, name, email, level, orders: order });
 
         return true;
     };
@@ -117,7 +117,7 @@ export class UserProvider extends React.Component {
      * @param passwordConfirmation string
      * @return void
      */
-    signUp = async (email, name, password, passwordConfirmation) => {
+    signUp = async (name, email, password, passwordConfirmation) => {
         if ('' === (email && name && password && passwordConfirmation)) {
             await this.setErrorMessage('Alla fält måste vara ifyllda.');
             return;
@@ -142,11 +142,13 @@ export class UserProvider extends React.Component {
             return;
         }
 
-        const token = `Bearer1 ${response.data.token}`;
+        const token = response.data.token.length > 0 ? `Bearer1 ${response.data.token}` : false;
 
-        SetLocalStorage('token', token);
+        if (token) {
+            SetLocalStorage('token', token);
+        }
 
-        const user = await this.setUser(token);
+        const user = await this.getUser(token);
 
         if (!user) {
             await this.setErrorMessage('Det gick inte att logga in den nya användaren.');
@@ -175,6 +177,16 @@ export class UserProvider extends React.Component {
         return;
     };
 
+    /**
+     * @return bool
+     */
+    isAdmin = () => {
+        if (this.state.isSignedIn && this.state.level === UserLevel.admin) {
+            return true;
+        }
+        return false;
+    };
+
     render() {
         return (
             <UserContext.Provider
@@ -182,10 +194,13 @@ export class UserProvider extends React.Component {
                     isSignedIn: this.state.isSignedIn,
                     name: this.state.name,
                     email: this.state.email,
+                    level: this.state.level,
+                    orders: this.state.orders,
                     error: this.state.error,
                     signIn: this.signIn,
                     signUp: this.signUp,
                     signOut: this.signOut,
+                    isAdmin: this.isAdmin,
                 }}>
                 {this.props.children}
             </UserContext.Provider>

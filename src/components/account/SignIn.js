@@ -1,28 +1,45 @@
 import React from 'react';
 import { Input, Button, Label } from '../styles';
+import { UserConsumer } from '../context/User';
 
-const SignIn = props => (
-    <div className="large-6 rp-20">
-        <Label>Email</Label>
-        <Input
-            value={props.email}
-            placeholder="Din email"
-            type="email"
-            required
-            onChange={e => props.setUserEmail(e.target.value)}
-        />
+export default class SignIn extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+        };
+    }
 
-        <Label>Lösenord</Label>
-        <Input
-            value={props.password}
-            type="password"
-            placeholder="*********"
-            required
-            onChange={e => props.setUserPassword(e.target.value)}
-        />
+    render() {
+        return (
+            <UserConsumer>
+                {user => (
+                    <div className="large-6 rp-20">
+                        <Label>Email</Label>
+                        <Input
+                            value={this.state.email}
+                            placeholder="Din email"
+                            type="email"
+                            required
+                            onChange={e => this.setState({ email: e.target.value })}
+                        />
 
-        <Button onClick={props.signIn}>Logga in</Button>
-    </div>
-);
+                        <Label>Lösenord</Label>
+                        <Input
+                            value={this.state.password}
+                            type="password"
+                            placeholder="*********"
+                            required
+                            onChange={e => this.setState({ password: e.target.value })}
+                        />
 
-export default SignIn;
+                        <Button onClick={() => user.signIn(this.state.email, this.state.password)}>
+                            Logga in
+                        </Button>
+                    </div>
+                )}
+            </UserConsumer>
+        );
+    }
+}

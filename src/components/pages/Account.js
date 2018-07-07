@@ -1,112 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Footer from '../layout/Footer';
 import HeaderDark from '../layout/HeaderDark';
 import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
 //import SignedIn from '../account/SignedIn';
 import { UserConsumer } from '../context/User';
-import { Title, Button } from '../styles';
+import { Title, Button, Paragraph } from '../styles';
 
-export default class Account extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            signInEmail: '',
-            signInPassword: '',
-            signUpName: '',
-            signUpEmail: '',
-            signUpPassword: '',
-            signUpPasswordConfirm: '',
-        };
-    }
+const Account = props => (
+    <UserConsumer>
+        {user => (
+            <React.Fragment>
+                {console.log(user)}
+                <HeaderDark />
+                <div className="row tm-40">
+                    <div className="large-12">
+                        <Title>
+                            {user.isSignedIn
+                                ? `Välkommen ${user.name}`
+                                : 'Logga in eller registrera konto'}
+                        </Title>
+                    </div>
 
-    /**
-     * @return component
-     */
-    renderIsSignedIn = () => {
-        return (
-            <UserConsumer>
-                {user => (
-                    <React.Fragment>
-                        {/* <h1>{`Välkommen ${user.name}`}</h1> */}
-                        {/* <SignedIn /> */}
+                    {user.isSignedIn ? <SignedIn signOut={user.signOut} /> : <Authenticate />}
+                    <Paragraph>{user.error}</Paragraph>
+                </div>
+                <Footer />
+            </React.Fragment>
+        )}
+    </UserConsumer>
+);
 
-                        <Button onClick={() => user.signOut()}>Logga ut</Button>
-                    </React.Fragment>
-                )}
-            </UserConsumer>
-        );
-    };
+export default Account;
 
-    /**
-     * @return component
-     */
-    renderAuthenticate = () => {
-        return (
-            <UserConsumer>
-                {user => (
-                    <React.Fragment>
-                        <SignIn
-                            email={this.state.signInEmail}
-                            password={this.state.signInPassword}
-                            setUserEmail={email => this.setState({ signInEmail: email })}
-                            setUserPassword={password =>
-                                this.setState({ signInPassword: password })
-                            }
-                            signIn={() =>
-                                user.signIn(this.state.signInEmail, this.state.signInPassword)
-                            }
-                        />
+const SignedIn = props => (
+    <div>
+        {/* <h1>{`Välkommen ${user.name}`}</h1> */}
+        {/* <SignedIn /> */}
 
-                        <SignUp
-                            name={this.state.signUpName}
-                            email={this.state.signUpEmail}
-                            password={this.state.signUpPassword}
-                            passwordConfirm={this.state.signUpPasswordConfirm}
-                            setUserName={name => this.setState({ signUpName: name })}
-                            setUserEmail={email => this.setState({ signUpEmail: email })}
-                            setUserPassword={password =>
-                                this.setState({ signUpPassword: password })
-                            }
-                            setUserPasswordConfirm={passwordConfirm =>
-                                this.setState({ signUpPasswordConfirm: passwordConfirm })
-                            }
-                            signUp={() =>
-                                user.signUp(
-                                    this.state.signUpEmail,
-                                    this.state.signUpName,
-                                    this.state.signUpPassword,
-                                    this.state.signUpPasswordConfirm,
-                                )
-                            }
-                        />
-                    </React.Fragment>
-                )}
-            </UserConsumer>
-        );
-    };
+        <Button onClick={props.signOut}>Logga ut</Button>
+    </div>
+);
 
-    render() {
-        return (
-            <UserConsumer>
-                {user => (
-                    <React.Fragment>
-                        <HeaderDark />
-                        <div className="row tm-40">
-                            <div className="large-12">
-                                <Title>
-                                    {user.isSignedIn
-                                        ? `Välkommen ${user.name}`
-                                        : 'Logga in eller registrera konto'}
-                                </Title>
-                            </div>
-                            <div className="large-12">{user.error}</div>
-                            {user.isSignedIn ? this.renderIsSignedIn() : this.renderAuthenticate()}
-                        </div>
-                        <Footer />
-                    </React.Fragment>
-                )}
-            </UserConsumer>
-        );
-    }
-}
+const Authenticate = props => (
+    <React.Fragment>
+        <SignIn />
+        <SignUp />
+    </React.Fragment>
+);
