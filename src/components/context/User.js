@@ -12,7 +12,7 @@ const UserContext = React.createContext({ isSignedIn: false });
 export const UserConsumer = UserContext.Consumer;
 
 /** Determen if a User is admin */
-export const UserLevel = { admin: 100, normal: null };
+export const UserLevel = { admin: 50, normal: 10 };
 
 export class UserProvider extends React.Component {
     constructor(props) {
@@ -134,8 +134,6 @@ export class UserProvider extends React.Component {
             password,
             passwordConfirmation,
         });
-
-        await this.setState({ signUpPassword: '', signUpPasswordConfirm: '' });
 
         if (200 !== response.status) {
             await this.setErrorMessage('Det gick inte att skapa ett konto.');
