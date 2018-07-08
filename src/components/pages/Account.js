@@ -22,7 +22,6 @@ const Account = props => (
                     </div>
 
                     {user.isSignedIn ? <SignedIn signOut={user.signOut} /> : <Authenticate />}
-                    <Paragraph>{user.error}</Paragraph>
                 </div>
                 <Footer />
             </React.Fragment>

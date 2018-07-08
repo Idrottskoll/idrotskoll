@@ -6,6 +6,7 @@ import {
     GetRequest,
     RemoveLocalStorageItem,
 } from '../middleware/api-calls';
+import { messageType } from '../layout/Alert.js';
 
 const UserContext = React.createContext({ isSignedIn: false });
 
@@ -34,7 +35,7 @@ export class UserProvider extends React.Component {
             orders: [],
 
             /** string */
-            error: null,
+            alert: false,
         };
 
         if (!this.state.isSignedIn) {
@@ -60,14 +61,14 @@ export class UserProvider extends React.Component {
      */
     signIn = async (email, password) => {
         if ('' === (email && password)) {
-            await this.setErrorMessage('E-post och lösenord måste vara ifyllt');
+            await this.setUserAlert('E-post och lösenord måste vara ifyllt', messageType.error);
             return;
         }
 
         const response = await PostRequest('login', { email, password });
 
         if (200 !== response.status) {
-            await this.setErrorMessage('Fel e-post adress eller lösenord.');
+            await this.setUserAlert('Fel e-post adress eller lösenord.', messageType.error);
             return;
         }
 
@@ -80,9 +81,11 @@ export class UserProvider extends React.Component {
         const user = await this.getUser(token);
 
         if (!user) {
-            await this.setErrorMessage('Det gick inte att logga in.');
+            await this.setUserAlert('Det gick inte att logga in.', messageType.error);
             return;
         }
+
+        await this.setUserAlert(`Välkommen tillbaka ${this.state.name}!`, messageType.success);
     };
 
     /**
@@ -119,12 +122,12 @@ export class UserProvider extends React.Component {
      */
     signUp = async (name, email, password, passwordConfirmation) => {
         if ('' === (email && name && password && passwordConfirmation)) {
-            await this.setErrorMessage('Alla fält måste vara ifyllda.');
+            await this.setUserAlert('Alla fält måste vara ifyllda.', messageType.error);
             return;
         }
 
         if (password !== passwordConfirmation) {
-            await this.setErrorMessage('Lösenord stämmer inte överens');
+            await this.setUserAlert('Lösenord stämmer inte överens', messageType.error);
             return;
         }
 
@@ -136,7 +139,7 @@ export class UserProvider extends React.Component {
         });
 
         if (200 !== response.status) {
-            await this.setErrorMessage('Det gick inte att skapa ett konto.');
+            await this.setUserAlert('Det gick inte att skapa ett konto.', messageType.error);
             return;
         }
 
@@ -149,9 +152,13 @@ export class UserProvider extends React.Component {
         const user = await this.getUser(token);
 
         if (!user) {
-            await this.setErrorMessage('Det gick inte att logga in den nya användaren.');
+            await this.setUserAlert(
+                'Det gick inte att logga in den nya användaren.',
+                messageType.error,
+            );
             return;
         }
+        await this.setUserAlert(`Välkommen tillbaka ${this.state.name}!`, messageType.success);
     };
 
     /**
@@ -160,7 +167,7 @@ export class UserProvider extends React.Component {
      */
     forgotPassword = async email => {
         if ('' === email) {
-            await this.setErrorMessage('Du måste fylla i en e-post adress.');
+            await this.setUserAlert('Du måste fylla i en e-post adress.', messageType.error);
             return;
         }
 
@@ -170,11 +177,14 @@ export class UserProvider extends React.Component {
         } = await PostRequest('account/forgot', { email });
 
         if (200 !== status) {
-            await this.setErrorMessage('Det gick inte att återställa ditt lösenord');
+            await this.setUserAlert(
+                'Det gick inte att återställa ditt lösenord',
+                messageType.error,
+            );
             return;
         }
 
-        await this.setErrorMessage(message);
+        await this.setUserAlert(message, messageType.success);
         return;
     };
 
@@ -191,10 +201,10 @@ export class UserProvider extends React.Component {
      * @param string message
      * @return void
      */
-    setErrorMessage = message => {
-        this.setState({ error: message });
+    setUserAlert = (message, type) => {
+        this.setState({ alert: { message: message, type: type } });
         setTimeout(() => {
-            this.setState({ error: null });
+            this.setState({ alert: false });
         }, 4000);
         return;
     };
@@ -218,7 +228,7 @@ export class UserProvider extends React.Component {
                     email: this.state.email,
                     level: this.state.level,
                     orders: this.state.orders,
-                    error: this.state.error,
+                    alert: this.state.alert,
                     signIn: this.signIn,
                     signUp: this.signUp,
                     forgotPassword: this.forgotPassword,
