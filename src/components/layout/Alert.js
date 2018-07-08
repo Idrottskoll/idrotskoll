@@ -4,46 +4,32 @@ import { Paragraph } from '../styles.js';
 
 export const messageType = { error: 0, success: 1, alert: 2, info: 3 };
 
-const AlertSuccess = styled.div`
-    width: 100%;
+const AlertBox = `
     height: 48px;
+    width: 100%;
     padding-left: 40px;
     padding-right: 40px;
     transition: all 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #80c38f;
     color: #ffffff;
     font-family: 'Renner-Medium';
+`;
+
+const AlertSuccess = styled.div`
+    ${AlertBox};
+    background-color: #80c38f;
 `;
 
 const AlertInfo = styled.div`
-    width: 100%;
-    height: 48px;
-    padding-left: 40px;
-    padding-right: 40px;
-    transition: all 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${AlertBox};
     background-color: #012e40;
-    color: #ffffff;
-    font-family: 'Renner-Medium';
 `;
 
 const AlertError = styled.div`
-    width: 100%;
-    height: 48px;
-    padding-left: 40px;
-    padding-right: 40px;
-    transition: all 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${AlertBox};
     background-color: #dc5960;
-    color: #ffffff;
-    font-family: 'Renner-Medium';
 `;
 
 function renderAlert(message, type) {
@@ -73,8 +59,6 @@ function renderAlert(message, type) {
         );
     }
 }
-
-// TODO: Make styles reusable
 
 const Alert = props => <React.Fragment>{renderAlert(props.message, props.type)}</React.Fragment>;
 
