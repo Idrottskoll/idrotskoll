@@ -157,6 +157,30 @@ export class UserProvider extends React.Component {
     };
 
     /**
+     * @param string email
+     * @return void
+     */
+    forgotPassword = async email => {
+        if ('' === email) {
+            await this.setErrorMessage('Du måste fylla i en e-post adress.');
+            return;
+        }
+
+        const {
+            data: { message },
+            status,
+        } = await PostRequest('account/forgot', { email });
+
+        if (200 !== status) {
+            await this.setErrorMessage('Det gick inte att återställa ditt lösenord');
+            return;
+        }
+
+        await this.setErrorMessage(message);
+        return;
+    };
+
+    /**
      * @return void
      */
     signOut = async () => {
@@ -199,6 +223,7 @@ export class UserProvider extends React.Component {
                     error: this.state.error,
                     signIn: this.signIn,
                     signUp: this.signUp,
+                    forgotPassword: this.forgotPassword,
                     signOut: this.signOut,
                     isAdmin: this.isAdmin,
                 }}>
