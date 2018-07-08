@@ -12,11 +12,11 @@ const Account = props => (
         {user => (
             <React.Fragment>
                 <HeaderDark />
-                <div className="row tm-40">
+                <div className="row tm-80">
                     <div className="large-12">
                         <Title>
                             {user.isSignedIn
-                                ? `Välkommen ${user.name}`
+                                ? `Du är inloggad som: ${user.name}`
                                 : 'Logga in eller registrera konto'}
                         </Title>
                     </div>
