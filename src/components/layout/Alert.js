@@ -32,7 +32,7 @@ const AlertError = styled.div`
     background-color: #dc5960;
 `;
 
-function renderAlert(message, type) {
+function renderAlert(message, type = messageType.info) {
     if (messageType.error === type) {
         return (
             <AlertError>
