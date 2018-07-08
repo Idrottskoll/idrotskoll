@@ -29,7 +29,6 @@ export default class HowDoesItWork extends Component {
                 <Paragraph>{this.state.text.new_club.body}</Paragraph>
               </div>
             </div>
-            <Seperator></Seperator>
           </div>
         );
     }
