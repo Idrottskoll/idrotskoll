@@ -74,6 +74,8 @@ function renderAlert(message, type) {
     }
 }
 
+// TODO: Make styles reusable
+
 const Alert = props => <React.Fragment>{renderAlert(props.message, props.type)}</React.Fragment>;
 
 export default Alert;
