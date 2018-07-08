@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Title, Paragraph, SmallTitle } from './styles';
 import { HowDoesItWorks } from './middleware/text';
-import { Seperator } from './seperator';
 
 export default class HowDoesItWork extends Component {
   constructor(props) {

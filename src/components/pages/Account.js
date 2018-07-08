@@ -5,7 +5,7 @@ import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
 import SignedIn from '../account/SignedIn';
 import { UserConsumer } from '../context/User';
-import { Title, Button, Paragraph } from '../styles';
+import { Title } from '../styles';
 
 const Account = props => (
     <UserConsumer>

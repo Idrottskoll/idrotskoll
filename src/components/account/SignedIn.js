@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, SmallTitle, Paragraph, Button } from '../styles';
+import { SmallTitle, Paragraph, Button } from '../styles';
 
 const SignedIn = props => (
     <div className="large-12">
