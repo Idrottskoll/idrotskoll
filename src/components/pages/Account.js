@@ -11,7 +11,6 @@ const Account = props => (
     <UserConsumer>
         {user => (
             <React.Fragment>
-                {console.log(user)}
                 <HeaderDark />
                 <div className="row tm-40">
                     <div className="large-12">
