@@ -3,7 +3,7 @@ import Footer from '../layout/Footer';
 import HeaderDark from '../layout/HeaderDark';
 import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
-//import SignedIn from '../account/SignedIn';
+import SignedIn from '../account/SignedIn';
 import { UserConsumer } from '../context/User';
 import { Title, Button, Paragraph } from '../styles';
 
@@ -31,15 +31,6 @@ const Account = props => (
 );
 
 export default Account;
-
-const SignedIn = props => (
-    <div>
-        {/* <h1>{`Välkommen ${user.name}`}</h1> */}
-        {/* <SignedIn /> */}
-
-        <Button onClick={props.signOut}>Logga ut</Button>
-    </div>
-);
 
 const Authenticate = props => (
     <React.Fragment>
