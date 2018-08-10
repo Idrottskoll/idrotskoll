@@ -57,6 +57,7 @@ const Header = props => (
                             isSignedIn={user.isSignedIn}
                             name={user.name}
                             signOut={user.signOut}
+                            theame={props.theame}
                         />
                     </div>
                 )}
