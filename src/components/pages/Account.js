@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../layout/Footer';
-import HeaderDark from '../layout/HeaderDark';
+import Header from '../layout/Header';
 import SignIn from '../account/SignIn';
 import SignUp from '../account/SignUp';
 import SignedIn from '../account/SignedIn';
@@ -11,7 +11,7 @@ const Account = props => (
     <UserConsumer>
         {user => (
             <React.Fragment>
-                <HeaderDark />
+                <Header theame="dark" />
                 <div className="row tm-80">
                     <div className="large-12">
                         <Title>
